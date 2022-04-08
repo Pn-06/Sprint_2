@@ -1,0 +1,1209 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Coordinated Universal Time">
+<General productName="Micro Focus UFT One" productVer="2021" os="Windows 10" host="vm001"><DocLocation><![CDATA[C:\Users\sfjbs\Downloads\training\Exc_Dtable]]></DocLocation></General>
+<Doc rID="T1"   productName= "Micro Focus UFT One"  >
+<DName><![CDATA[Exc_Dtable]]></DName>
+<Res><![CDATA[Res22]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xlsx]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:27]]></Time>
+<TimeTick>1649249187</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="7" nType="Start Transaction" Source="Action1" SourceLine="14" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:28]]></Time>
+<TimeTick>1649249188</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:28]]></Time>
+<TimeTick>1649249188</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:30]]></Time>
+<TimeTick>1649249190</TimeTick>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["John"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:30]]></Time>
+<TimeTick>1649249190</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="16" Source="Action1" SourceLine="17" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["624d7f29bfba5671a353"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:31]]></Time>
+<TimeTick>1649249191</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="18" Source="Action1" SourceLine="18" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:31]]></Time>
+<TimeTick>1649249191</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="20" Source="Action1" SourceLine="19" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" ended with "Pass" status (Total Duration: 4.6534 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:31]]></Time>
+<TimeTick>1649249191</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="21" nType="End Transaction" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:31]]></Time>
+<TimeTick>1649249191</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="22" nType="Start Transaction" Source="Action1" SourceLine="25" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:33]]></Time>
+<TimeTick>1649249193</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="26" Source="Action1" SourceLine="27" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Portland"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:34]]></Time>
+<TimeTick>1649249194</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="28" Source="Action1" SourceLine="28" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Economy"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:34]]></Time>
+<TimeTick>1649249194</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="30" Source="Action1" SourceLine="29" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:35]]></Time>
+<TimeTick>1649249195</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="32" Source="Action1" SourceLine="30" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:36]]></Time>
+<TimeTick>1649249196</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="34" Source="Action1" SourceLine="31" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" ended with "Pass" status (Total Duration: 4.2153 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:36]]></Time>
+<TimeTick>1649249196</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="35" nType="End Transaction" Source="Action1" SourceLine="33" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="15" Source="Action1" SourceLine="17" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj ><![CDATA[Flight_Login]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:36]]></Time>
+<TimeTick>1649249196</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="36" status="Passed" Source="Action1" SourceLine="34" >
+<Disp><![CDATA[Flight_Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:36]]></Time>
+<TimeTick>1649249196</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="37" nType="Start Transaction" Source="Action1" SourceLine="36" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[0, 1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="40" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="42" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" ended with "Pass" status (Total Duration: 1.4292 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="43" nType="End Transaction" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="39" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj ><![CDATA[Flight_Selection]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="44" status="Passed" Source="Action1" SourceLine="42" >
+<Disp><![CDATA[Flight_Selection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:37]]></Time>
+<TimeTick>1649249197</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="45" nType="Start Transaction" Source="Action1" SourceLine="44" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:38]]></Time>
+<TimeTick>1649249198</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["t001"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:38]]></Time>
+<TimeTick>1649249198</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="48" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:38]]></Time>
+<TimeTick>1649249198</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="50" Source="Action1" SourceLine="47" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" ended with "Pass" status (Total Duration: 0.8755 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:38]]></Time>
+<TimeTick>1649249198</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="51" nType="End Transaction" Source="Action1" SourceLine="49" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="47" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj ><![CDATA[Flight_Order]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:38]]></Time>
+<TimeTick>1649249198</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="52" status="Passed" Source="Action1" SourceLine="50" >
+<Disp><![CDATA[Flight_Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:39]]></Time>
+<TimeTick>1649249199</TimeTick>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Close]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:39]]></Time>
+<TimeTick>1649249199</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="55" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Close]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:39]]></Time>
+<TimeTick>1649249199</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="56" nType="Start Transaction" Source="Action1" SourceLine="14" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:41]]></Time>
+<TimeTick>1649249201</TimeTick>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:41]]></Time>
+<TimeTick>1649249201</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="60" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="59" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["John"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:42]]></Time>
+<TimeTick>1649249202</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="64" Source="Action1" SourceLine="17" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["624d7f29bfba5671a353"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:43]]></Time>
+<TimeTick>1649249203</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="66" Source="Action1" SourceLine="18" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:43]]></Time>
+<TimeTick>1649249203</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="68" Source="Action1" SourceLine="19" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" ended with "Pass" status (Total Duration: 4.0907 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:43]]></Time>
+<TimeTick>1649249203</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="69" nType="End Transaction" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:43]]></Time>
+<TimeTick>1649249203</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="70" nType="Start Transaction" Source="Action1" SourceLine="25" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:44]]></Time>
+<TimeTick>1649249204</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="74" Source="Action1" SourceLine="27" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:45]]></Time>
+<TimeTick>1649249205</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="76" Source="Action1" SourceLine="28" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["First"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:45]]></Time>
+<TimeTick>1649249205</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="78" Source="Action1" SourceLine="29" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["5"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:46]]></Time>
+<TimeTick>1649249206</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="80" Source="Action1" SourceLine="30" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:46]]></Time>
+<TimeTick>1649249206</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="82" Source="Action1" SourceLine="31" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" ended with "Pass" status (Total Duration: 3.1059 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:46]]></Time>
+<TimeTick>1649249206</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="83" nType="End Transaction" Source="Action1" SourceLine="33" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="54" status="Passed" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj ><![CDATA[Flight_Login]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:46]]></Time>
+<TimeTick>1649249206</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="84" status="Passed" Source="Action1" SourceLine="34" >
+<Disp><![CDATA[Flight_Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:46]]></Time>
+<TimeTick>1649249206</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="85" nType="Start Transaction" Source="Action1" SourceLine="36" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[0, 1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="88" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="90" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" ended with "Pass" status (Total Duration: 0.8385 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="91" nType="End Transaction" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="87" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj ><![CDATA[Flight_Selection]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="92" status="Passed" Source="Action1" SourceLine="42" >
+<Disp><![CDATA[Flight_Selection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="93" nType="Start Transaction" Source="Action1" SourceLine="44" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["t002"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:47]]></Time>
+<TimeTick>1649249207</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="96" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="98" Source="Action1" SourceLine="47" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" ended with "Pass" status (Total Duration: 0.5746 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="99" nType="End Transaction" Source="Action1" SourceLine="49" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="95" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj ><![CDATA[Flight_Order]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="100" status="Passed" Source="Action1" SourceLine="50" >
+<Disp><![CDATA[Flight_Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Close]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="103" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Close]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:48]]></Time>
+<TimeTick>1649249208</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="104" nType="Start Transaction" Source="Action1" SourceLine="14" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:50]]></Time>
+<TimeTick>1649249210</TimeTick>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:50]]></Time>
+<TimeTick>1649249210</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="108" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="107" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["John"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:52]]></Time>
+<TimeTick>1649249212</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="112" Source="Action1" SourceLine="17" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["624d7f29bfba5671a353"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:52]]></Time>
+<TimeTick>1649249212</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="114" Source="Action1" SourceLine="18" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:52]]></Time>
+<TimeTick>1649249212</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="116" Source="Action1" SourceLine="19" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" ended with "Pass" status (Total Duration: 4.0483 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:52]]></Time>
+<TimeTick>1649249212</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="117" nType="End Transaction" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:52]]></Time>
+<TimeTick>1649249212</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="118" nType="Start Transaction" Source="Action1" SourceLine="25" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:53]]></Time>
+<TimeTick>1649249213</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="120" Source="Action1" SourceLine="27" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["London"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:54]]></Time>
+<TimeTick>1649249214</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="122" Source="Action1" SourceLine="28" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Economy"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:54]]></Time>
+<TimeTick>1649249214</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="124" Source="Action1" SourceLine="29" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["2"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:55]]></Time>
+<TimeTick>1649249215</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="126" Source="Action1" SourceLine="30" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:55]]></Time>
+<TimeTick>1649249215</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="128" Source="Action1" SourceLine="31" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" ended with "Pass" status (Total Duration: 2.7542 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:55]]></Time>
+<TimeTick>1649249215</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="129" nType="End Transaction" Source="Action1" SourceLine="33" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="102" status="Passed" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj ><![CDATA[Flight_Login]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:55]]></Time>
+<TimeTick>1649249215</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="130" status="Passed" Source="Action1" SourceLine="34" >
+<Disp><![CDATA[Flight_Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:55]]></Time>
+<TimeTick>1649249215</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="131" nType="Start Transaction" Source="Action1" SourceLine="36" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[0, 1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="134" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="136" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" ended with "Pass" status (Total Duration: 0.8331 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="137" nType="End Transaction" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="133" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj ><![CDATA[Flight_Selection]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="138" status="Passed" Source="Action1" SourceLine="42" >
+<Disp><![CDATA[Flight_Selection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:56]]></Time>
+<TimeTick>1649249216</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="139" nType="Start Transaction" Source="Action1" SourceLine="44" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["t003"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="142" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="144" Source="Action1" SourceLine="47" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" ended with "Pass" status (Total Duration: 0.5453 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="145" nType="End Transaction" Source="Action1" SourceLine="49" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="141" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj ><![CDATA[Flight_Order]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="146" status="Passed" Source="Action1" SourceLine="50" >
+<Disp><![CDATA[Flight_Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Close]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:57]]></Time>
+<TimeTick>1649249217</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="149" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Close]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:58]]></Time>
+<TimeTick>1649249218</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="150" nType="Start Transaction" Source="Action1" SourceLine="14" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:59]]></Time>
+<TimeTick>1649249219</TimeTick>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:46:59]]></Time>
+<TimeTick>1649249219</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="154" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[Run ""C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Micro Focus\Micro Focus UFT One\Sample Applications\Flight GUI"",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="153" status="Passed" Source="Action1" SourceLine="16" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["John"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:01]]></Time>
+<TimeTick>1649249221</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="158" Source="Action1" SourceLine="17" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["624d7f29bfba5671a353"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:01]]></Time>
+<TimeTick>1649249221</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="160" Source="Action1" SourceLine="18" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:01]]></Time>
+<TimeTick>1649249221</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="162" Source="Action1" SourceLine="19" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Login" ended with "Pass" status (Total Duration: 3.9261 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:01]]></Time>
+<TimeTick>1649249221</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="163" nType="End Transaction" Source="Action1" SourceLine="21" >
+<Disp><![CDATA[Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:02]]></Time>
+<TimeTick>1649249222</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="164" nType="Start Transaction" Source="Action1" SourceLine="25" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:02]]></Time>
+<TimeTick>1649249222</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="166" Source="Action1" SourceLine="27" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:03]]></Time>
+<TimeTick>1649249223</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="168" Source="Action1" SourceLine="28" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:03]]></Time>
+<TimeTick>1649249223</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="170" Source="Action1" SourceLine="29" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["4"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:04]]></Time>
+<TimeTick>1649249224</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="172" Source="Action1" SourceLine="30" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:04]]></Time>
+<TimeTick>1649249224</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="174" Source="Action1" SourceLine="31" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[Find_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Find_Flight" ended with "Pass" status (Total Duration: 2.9319 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:04]]></Time>
+<TimeTick>1649249224</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="175" nType="End Transaction" Source="Action1" SourceLine="33" >
+<Disp><![CDATA[Find_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="148" status="Passed" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj ><![CDATA[Flight_Login]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:05]]></Time>
+<TimeTick>1649249225</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="176" status="Passed" Source="Action1" SourceLine="34" >
+<Disp><![CDATA[Flight_Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:05]]></Time>
+<TimeTick>1649249225</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="177" nType="Start Transaction" Source="Action1" SourceLine="36" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:05]]></Time>
+<TimeTick>1649249225</TimeTick>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[0, 1]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:05]]></Time>
+<TimeTick>1649249225</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="180" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:05]]></Time>
+<TimeTick>1649249225</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="182" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[Slct_Flight]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Slct_Flight" ended with "Pass" status (Total Duration: 0.8896 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="183" nType="End Transaction" Source="Action1" SourceLine="41" >
+<Disp><![CDATA[Slct_Flight]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="179" Source="Action1" SourceLine="38" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T112">
+<Obj ><![CDATA[Flight_Selection]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="184" status="Passed" Source="Action1" SourceLine="42" >
+<Disp><![CDATA[Flight_Selection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" started.]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="185" nType="Start Transaction" Source="Action1" SourceLine="44" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["t004"]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="188" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="190" Source="Action1" SourceLine="47" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T117">
+<Obj plainTxt="False" ><![CDATA[Order]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "Order" ended with "Pass" status (Total Duration: 0.5839 sec).]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="Transaction" icon="9" nRep="191" nType="End Transaction" Source="Action1" SourceLine="49" >
+<Disp><![CDATA[Order]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="187" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj ><![CDATA[Flight_Order]]></Obj>
+<Details ><![CDATA[successfully..............]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:06]]></Time>
+<TimeTick>1649249226</TimeTick>
+<NodeArgs eType="User" icon="11" nRep="192" status="Passed" Source="Action1" SourceLine="50" >
+<Disp><![CDATA[Flight_Order]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T119">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:07]]></Time>
+<TimeTick>1649249227</TimeTick>
+<Step rID="T120">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample.Close]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[4/6/2022 - 12:47:07]]></Time>
+<TimeTick>1649249227</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="195" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample.Close]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="194" Source="Action1" SourceLine="53" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="4/6/2022 - 12:46:26" eTime="4/6/2022 - 12:47:07" passed="16" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" status="Passed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="4/6/2022 - 12:46:23" eTime="4/6/2022 - 12:47:07" passed="16" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Passed" >
+<Disp><![CDATA[Test Exc_Dtable Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

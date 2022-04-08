@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.1.3.0
+Project("") = "Excel_", "Excel_\Test.tsp", "84CB31FC-A69B-4EBC-95E5-91AAD33DD03C"
+	ProjectSection(ProjectMetadata) = HP.UFT.ProjectSystem.Dynamic.ProjectMetadata
+		PathInformation = C:\Users\sfjbs\Downloads\training\Excel_\Test.tsp
+		Keyword = QTP
+		OpenAsReadOnly = False
+	EndProjectSection
+EndProject
+Project("") = "Ex_", "Ex_\Test.tsp", "9AE0BFE2-1AA3-46B7-A9CB-1CDF1DC60165"
+	ProjectSection(ProjectMetadata) = HP.UFT.ProjectSystem.Dynamic.ProjectMetadata
+		PathInformation = C:\Users\sfjbs\Downloads\training\Ex_\Test.tsp
+		Keyword = QTP
+		OpenAsReadOnly = False
+	EndProjectSection
+EndProject
+Project("") = "Exc_Dtable", "Exc_Dtable\Test.tsp", "3D8F48C7-0587-47F2-9B8C-D58978782F66"
+	ProjectSection(ProjectMetadata) = HP.UFT.ProjectSystem.Dynamic.ProjectMetadata
+		PathInformation = C:\Users\sfjbs\Downloads\training\Exc_Dtable\Test.tsp
+		Keyword = QTP
+		OpenAsReadOnly = False
+		BaselineId = 
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		84CB31FC-A69B-4EBC-95E5-91AAD33DD03C.Debug|Any CPU.Build.0 = Debug|Any CPU
+		84CB31FC-A69B-4EBC-95E5-91AAD33DD03C.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		84CB31FC-A69B-4EBC-95E5-91AAD33DD03C.Release|Any CPU.Build.0 = Release|Any CPU
+		84CB31FC-A69B-4EBC-95E5-91AAD33DD03C.Release|Any CPU.ActiveCfg = Release|Any CPU
+		9AE0BFE2-1AA3-46B7-A9CB-1CDF1DC60165.Debug|Any CPU.Build.0 = Debug|Any CPU
+		9AE0BFE2-1AA3-46B7-A9CB-1CDF1DC60165.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		9AE0BFE2-1AA3-46B7-A9CB-1CDF1DC60165.Release|Any CPU.Build.0 = Release|Any CPU
+		9AE0BFE2-1AA3-46B7-A9CB-1CDF1DC60165.Release|Any CPU.ActiveCfg = Release|Any CPU
+		3D8F48C7-0587-47F2-9B8C-D58978782F66.Debug|Any CPU.Build.0 = Debug|Any CPU
+		3D8F48C7-0587-47F2-9B8C-D58978782F66.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		3D8F48C7-0587-47F2-9B8C-D58978782F66.Release|Any CPU.Build.0 = Release|Any CPU
+		3D8F48C7-0587-47F2-9B8C-D58978782F66.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
